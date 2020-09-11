@@ -32,5 +32,7 @@
 （ここがよくわからない人は、遠慮なく聞いてください。）
 * `pull-request`の承認は、特定の人に依頼するのではなく、開発メンバーのうち２人がOKとして、`merge`を行う。
 * `merge`を実施するのは、`pull-request`の依頼者とする。
+* `pull-request`の依頼者は、`pull-request`を発行した場合、`@here`でslack全員に通知を送る
+* `pull-request`を受けた側は、基本全員（最低２人）が承認できる状態で`pull-request`の依頼者が`merge`をする。
 
 
