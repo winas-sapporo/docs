@@ -21,7 +21,7 @@
                 
 
 
-                <!-- table[Start] --><div class="col-md-3"><h2 class="info">clothes</h2><h5>[衣類登録情報 ]</h5><div class="table-responsive">
+                <!-- table[Start] --><div class="col-md-3"><h2 class="info">trn_clothes</h2><h5>[衣類登録情報 ]</h5><div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr class="bg-primary text-white">
@@ -33,38 +33,38 @@
 
                             <tbody>
                             <!-- TR --><tr><td>1</td><td>increments('id');
-</td><td></td></tr><tr><td>2</td><td>integer('id_users')->nullable()->unsigned();</td><td>ユーザID</td></tr><tr><td>3</td><td>timestamps();
-</td><td></td></tr><tr><td>4</td><td>softDeletes();
-</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_users")<span class="text-danger">->references("id")->on("users");</span>
-</td></tr></tr><!-- TR -->
-                            </tbody>
-
-                        </table>
-                    </div>
-                     </div>
-                    <!-- table[end] --><div class="col-md-3"><h2 class="info">clothes_tags</h2><h5>[衣類登録タグ情報 ]</h5><div class="table-responsive">
-                        <table class="table table-striped table-hover table-bordered">
-                            <thead>
-                            <tr class="bg-primary text-white">
-                                <th>-</th>
-                                <th>Name(Type Size)</th>
-                                <th>Comment</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <!-- TR --><tr><td>1</td><td>increments('id');
-</td><td></td></tr><tr><td>2</td><td>integer('id_clothes')->nullable()->unsigned();</td><td>衣類登録ID</td></tr><tr><td>3</td><td>integer('id_tags')->nullable()->unsigned();</td><td>タグID</td></tr><tr><td>4</td><td>timestamps();
+</td><td></td></tr><tr><td>2</td><td>integer('id_mst_users')->nullable()->unsigned();</td><td>ユーザID</td></tr><tr><td>3</td><td>string('register_status',255)->nullable();</td><td>登録状況(TMP, VALID)</td></tr><tr><td>4</td><td>timestamps();
 </td><td></td></tr><tr><td>5</td><td>softDeletes();
-</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_clothes")<span class="text-danger">->references("id")->on("clothes");</span>
-</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_tags")<span class="text-danger">->references("id")->on("tags");</span>
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_mst_users")<span class="text-danger">->references("id")->on("mst_users");</span>
 </td></tr></tr><!-- TR -->
                             </tbody>
 
                         </table>
                     </div>
                      </div>
-                    <!-- table[end] --><div class="col-md-3"><h2 class="info">users</h2><h5>[ユーザ情報 ]</h5><div class="table-responsive">
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">trn_clothes_tags</h2><h5>[衣類登録タグ情報 ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>integer('id_trn_clothes')->nullable()->unsigned();</td><td>衣類登録ID</td></tr><tr><td>3</td><td>integer('id_mst_tags')->nullable()->unsigned();</td><td>タグID</td></tr><tr><td>4</td><td>timestamps();
+</td><td></td></tr><tr><td>5</td><td>softDeletes();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_trn_clothes")<span class="text-danger">->references("id")->on("trn_clothes");</span>
+</td></tr></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_mst_tags")<span class="text-danger">->references("id")->on("mst_tags");</span>
+</td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">mst_users</h2><h5>[ユーザ情報 ]</h5><div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr class="bg-primary text-white">
@@ -84,7 +84,7 @@
                         </table>
                     </div>
                      </div>
-                    <!-- table[end] --><div class="col-md-3"><h2 class="info">tags</h2><h5>[タグ情報マスタ ]</h5><div class="table-responsive">
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">mst_tags</h2><h5>[タグ情報マスタ ]</h5><div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr class="bg-primary text-white">
@@ -96,16 +96,17 @@
 
                             <tbody>
                             <!-- TR --><tr><td>1</td><td>increments('id');
-</td><td></td></tr><tr><td>2</td><td>string('name',255)->nullable();</td><td>タグ名</td></tr><tr><td>3</td><td>timestamps();
-</td><td></td></tr><tr><td>4</td><td>softDeletes();
-</td><td></td></tr><tr><td>5</td><td>index();
-</td><td></td></tr><!-- TR -->
+</td><td></td></tr><tr><td>2</td><td>string('name',255)->nullable();</td><td>タグ名</td></tr><tr><td>3</td><td>integer('id_mst_categories')->nullable()->unsigned();</td><td>カテゴリID</td></tr><tr><td>4</td><td>timestamps();
+</td><td></td></tr><tr><td>5</td><td>softDeletes();
+</td><td></td></tr><tr><td>6</td><td>index();
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_mst_categories")<span class="text-danger">->references("id")->on("mst_categories");</span>
+</td></tr></tr><!-- TR -->
                             </tbody>
 
                         </table>
                     </div>
                      </div>
-                    <!-- table[end] --><div class="col-md-3"><h2 class="info">clothes_images</h2><h5>[衣類登録画像情報 ]</h5><div class="table-responsive">
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">trn_clothes_images</h2><h5>[衣類登録画像情報 ]</h5><div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <tr class="bg-primary text-white">
@@ -117,10 +118,30 @@
 
                             <tbody>
                             <!-- TR --><tr><td>1</td><td>increments('id');
-</td><td></td></tr><tr><td>2</td><td>string('file_path',255)->nullable();</td><td>ファイルパス</td></tr><tr><td>3</td><td>integer('id_clothes')->nullable()->unsigned();</td><td>衣類登録ID</td></tr><tr><td>4</td><td>timestamps();
+</td><td></td></tr><tr><td>2</td><td>string('file_path',255)->nullable();</td><td>ファイルパス</td></tr><tr><td>3</td><td>integer('id_trn_clothes')->nullable()->unsigned();</td><td>衣類登録ID</td></tr><tr><td>4</td><td>timestamps();
 </td><td></td></tr><tr><td>5</td><td>softDeletes();
-</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_clothes")<span class="text-danger">->references("id")->on("clothes");</span>
+</td><td></td></tr><tr><td class="bg-secondary text-white">FK</td><td colspan="2">//$table->foreign("id_trn_clothes")<span class="text-danger">->references("id")->on("trn_clothes");</span>
 </td></tr></tr><!-- TR -->
+                            </tbody>
+
+                        </table>
+                    </div>
+                     </div>
+                    <!-- table[end] --><div class="col-md-3"><h2 class="info">mst_categories</h2><h5>[衣類カテゴリマスタ ]</h5><div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>-</th>
+                                <th>Name(Type Size)</th>
+                                <th>Comment</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!-- TR --><tr><td>1</td><td>increments('id');
+</td><td></td></tr><tr><td>2</td><td>string('name',255)->nullable();</td><td>カテゴリ名</td></tr><tr><td>3</td><td>timestamps();
+</td><td></td></tr><tr><td>4</td><td>softDeletes();
+</td><td></td></tr><!-- TR -->
                             </tbody>
 
                         </table>
