@@ -1,0 +1,67 @@
+swagger: '2.0'
+
+# モックのメタデータを記述する
+info:
+  description: |
+    This is a sample server Petstore server.  You can find
+    out more about Swagger at
+    [http://swagger.io](http://swagger.io) or on
+    [irc.freenode.net, #swagger](http://swagger.io/irc/).
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# モックサーバーのプロトコルの選択
+schemes:
+- http
+
+# エンドポイントの記述
+paths:
+  /clothtag/{clothimage}:
+    get:
+      tags:
+      - clothtag
+      summary: Find cloth image
+      description: Return cloth image
+      operationId: getClothImage
+      produces:
+      - application/json
+      parameters:
+      - name: clothimage
+        in: path
+        description: cloth image
+        required: true
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Cloth'
+        400:
+          description: Invalid cloth supplied
+        404:
+          description: cloth not found
+
+# モデル定義の記述
+definitions:
+  Cloth:
+    type: object
+    properties:
+      cloth_id:
+        type: number
+        example: 1
+      tags:
+        type: array
+        items:
+          $ref: '#/definitions/Tags'
+  Tags:
+    type: object
+    properties:
+      id: 
+        type: number
+        example: 1
+      value:
+        type: string
+        example: Tシャツ
