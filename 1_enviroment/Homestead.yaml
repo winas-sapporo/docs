@@ -1,0 +1,41 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 2
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: C:\Vagrant\centos7\app\code
+      to: /home/vagrant/Code
+
+sites:
+    - map: homestead.test
+      to: /home/vagrant/code/TestApp/public
+?
+    - map: homestead.cocokara
+      to: /home/vagrant/code/cocokarafine/public
+?
+    - map: homestead.cordinator
+      to: /home/vagrant/code/web-repo/public
+
+databases:
+    - test
+    - cocokara
+    - cordinator
+
+features:
+    - mariadb: false
+    - ohmyzsh: false
+    - webdriver: false
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
